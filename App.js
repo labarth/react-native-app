@@ -6,7 +6,8 @@
  * @flow
  */
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, TextInput } from 'react-native';
+import { Platform, StyleSheet, Text, View } from 'react-native';
+import { connect } from 'react-redux';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -15,16 +16,27 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
-export default class App extends Component {
+class App extends Component {
   render() {
+    const { test, notes } = this.props;
+
+    console.log(notes);
 
     return (
       <View style={styles.container}>
-        <Text>Welcom to react</Text>
+        {test.map((item) => (<Text key={item}>{item}</Text>))}
+        {notes.map((item) => (<Text key={item}>{item.get('amount')}</Text>))}
       </View>
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  test: state.test,
+  notes: state.notes,
+});
+
+export default connect(mapStateToProps)(App);
 
 const styles = StyleSheet.create({
   container: {
@@ -32,15 +44,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
   },
 });
