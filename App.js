@@ -18,20 +18,17 @@ const instructions = Platform.select({
 
 class App extends Component {
   render() {
-    const { test, notes } = this.props;
-
-    console.log(notes);
+    const { notes } = this.props;
 
     return (
       <View style={styles.container}>
-        привет
+        {notes.map((item) => (<Text key={item}>{item.get('amount')}</Text>))}
       </View>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  test: state.test,
   notes: state.notes,
 });
 
@@ -45,6 +42,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
 });
-
-{/*{test.map((item) => (<Text key={item}>{item}</Text>))}*/}
-{/*{notes.map((item) => (<Text key={item}>{item.get('amount')}</Text>))}*/}
