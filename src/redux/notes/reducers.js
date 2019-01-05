@@ -10,8 +10,8 @@ const initialState = List([
     description: 'таблетки',
     currency: 'BYN',
     isInc: false,
-    date: new Date().toLocaleDateString(),
-    amount: 2.48,
+    date: new Date(),
+    amount: 2.59,
   }),
   Map({
     id: v4(),
@@ -19,7 +19,7 @@ const initialState = List([
     description: 'бензин',
     currency: 'BYN',
     isInc: false,
-    date: new Date().toLocaleDateString(),
+    date: new Date(),
     amount: 60,
   }),
   Map({
@@ -28,7 +28,7 @@ const initialState = List([
     description: 'зарплата',
     currency: 'BYN',
     isInc: true,
-    date: new Date().toLocaleDateString(),
+    date: new Date(),
     amount: 3500,
   }),
 ])

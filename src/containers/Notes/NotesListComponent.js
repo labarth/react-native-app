@@ -1,13 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Text, View } from 'react-native';
-import { connect } from 'react-redux';
+import { Text, View, StyleSheet } from 'react-native';
 
-const mapStateToProps = (state) => ({
-  nn: state.notes
-})
-
-@connect(mapStateToProps)
 class NotesListComponent extends PureComponent {
   static propTypes = {};
 
@@ -16,21 +10,41 @@ class NotesListComponent extends PureComponent {
   render() {
     const { notes } = this.props;
 
-    console.log(this.props.nn, 'zalupaika');
-
     return (
       notes.map((item) => (
-        <View key={item.get('id')}>
-          <Text>{item.get('amount')}</Text>
+        <View key={item.get('id')} style={[styles.item, item.get('isInc') && styles.isInc]}>
+          <Text style={styles.text}>{item.get('amount')}</Text>
           <Text>{item.get('currency')}</Text>
           <Text>{item.get('description')}</Text>
           <Text>{item.get('category')}</Text>
-          <Text>{item.get('date')}</Text>
+          <Text>{new Date(item.get('date')).toLocaleDateString()}</Text>
           <Text>{item.get('isInc') ? 'true' : 'false'}</Text>
         </View>
       ))
     );
   }
 }
+
+const styles = StyleSheet.create({
+  item: {
+    backgroundColor: 'white',
+    color: 'red',
+    marginBottom: 10,
+    position: 'relative',
+  },
+  text: {
+    color: '#000',
+    fontSize: 15,
+    fontFamily: 'Verdana',
+  },
+  isInc: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: 3,
+    height: '100%',
+    backgroundColor: 'green',
+  }
+});
 
 export { NotesListComponent };
