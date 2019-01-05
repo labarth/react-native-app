@@ -24,8 +24,7 @@ class App extends Component {
 
     return (
       <View style={styles.container}>
-        {test.map((item) => (<Text key={item}>{item}</Text>))}
-        {notes.map((item) => (<Text key={item}>{item.get('amount')}</Text>))}
+        привет
       </View>
     );
   }
@@ -46,3 +45,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
 });
+
+{/*{test.map((item) => (<Text key={item}>{item}</Text>))}*/}
+{/*{notes.map((item) => (<Text key={item}>{item.get('amount')}</Text>))}*/}
