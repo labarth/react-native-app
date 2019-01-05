@@ -1,11 +1,13 @@
 {
-  "presets": ["module:metro-react-native-babel-preset", "@babel/preset-env"],
+  "presets": ["module:metro-react-native-babel-preset"],
   "plugins": [
     ["@babel/plugin-proposal-decorators", { "legacy": true }],
     "@babel/plugin-proposal-class-properties",
     ["module-resolver", {
       "root": ["./src"],
-      "alias": {}
+      "alias": {
+
+      }
     }]
   ]
 }
