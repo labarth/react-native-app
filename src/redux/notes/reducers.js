@@ -1,17 +1,20 @@
+import { v4 } from 'uuid';
 import { List, Map } from 'immutable';
 import { handleActions } from 'redux-actions';
-import { actions } from './actions';
+import { addNote, deleteNote } from './actions';
 
 const initialState = List([
   Map({
+    id: v4(),
     category: 'Здоровье',
-    description: 'стоп диар',
+    description: 'таблетки',
     currency: 'BYN',
     isInc: false,
     date: new Date().toLocaleDateString(),
-    amount: 2.46,
+    amount: 2.48,
   }),
   Map({
+    id: v4(),
     category: 'Авто',
     description: 'бензин',
     currency: 'BYN',
@@ -20,21 +23,22 @@ const initialState = List([
     amount: 60,
   }),
   Map({
+    id: v4(),
     category: 'Зарплата',
     description: 'зарплата',
     currency: 'BYN',
-    isInc: false,
+    isInc: true,
     date: new Date().toLocaleDateString(),
     amount: 3500,
   }),
 ])
 
-const addNode = (state, { payload }) => state.push(payload.note);
+const addNodeReducer = (state, { payload }) => state.push(payload.note);
 
-const deleteNote = (state, { payload }) => state.filter((note) => note.get('id') !== payload.id);
+const deleteNoteReducer = (state, { payload }) => state.filter((note) => note.get('id') !== payload.id);
 
 
 export default handleActions({
-  [actions.addNote]: addNode,
-  [actions.deleteNote]: deleteNote,
+  [addNote]: addNodeReducer,
+  [deleteNote]: deleteNoteReducer,
 }, initialState);
