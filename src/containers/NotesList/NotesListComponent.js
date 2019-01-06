@@ -15,6 +15,13 @@ class NotesListComponent extends PureComponent {
     this.props.navigation.dispatch(NavigationActions.navigate({ routeName: 'AddNote' }));
   }
 
+  componentWillMount() {
+    firebase.database().ref('users/001').set({
+      name: 'Alexander Matiugin',
+      age: 25,
+    })
+  }
+
   render() {
     const { notes, deleteNote } = this.props;
 
