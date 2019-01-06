@@ -1,14 +1,18 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View, } from 'react-native';
 import { Row } from '../../components/Row/Row';
 import { CustomText } from '../../components/CustomText/CustomText';
-import { StyledContent, StyledItem, StyledAmountText, StyledData } from './Styled/Styled';
+import { StyledContent, StyledItem, StyledAmountText, StyledIconTrash } from './Styled/Styled';
 
 class NotesListItem extends PureComponent {
   static propTypes = {};
 
   static defaultProps = {};
+
+  handleDeleteNote = () => {
+    this.props.deleteNote({id: this.props.item.get('id') });
+  }
 
   render() {
     const { item } = this.props;
@@ -24,6 +28,7 @@ class NotesListItem extends PureComponent {
             </Row>
           </Row>
           <CustomText>{item.get('description')}</CustomText>
+          <StyledIconTrash name="trash" size={25} color="red" onPress={this.handleDeleteNote}/>
         </StyledContent>
         <View style={[item.get('isInc') ? styles.isInc : styles.isDec]} />
       </StyledItem>
