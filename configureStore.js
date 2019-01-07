@@ -10,3 +10,5 @@ export const store = createStore(
   reducer,
   composeWithDevTools(enhancer),
 );
+
+window.store = store;

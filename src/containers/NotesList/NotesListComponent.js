@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { List, Map } from 'immutable';
 import { NavigationActions } from 'react-navigation';
-import { ScrollView, View, Text } from 'react-native';
+import { ScrollView, View, Text, ActivityIndicator } from 'react-native';
 import { NotesListItem } from './NotesListItem';
 import { StyledIconAdd } from './Styled/Styled';
 import { database } from '../../../configFirebase';
-import { GoogleSignin } from 'react-native-google-signin'
+import { GoogleSignin } from 'react-native-google-signin';
 
 
 class NotesListComponent extends PureComponent {
@@ -27,23 +27,27 @@ class NotesListComponent extends PureComponent {
     }
   };
 
-  componentWillMount() {
-    database.ref('users/001').set({
-      name: 'Alexander Matiugin',
-      age: 25,
-    })
+  renderlist = () => {
+    const { notes: { list }, deleteNote } = this.props;
+
+    return (
+      list.size ? (
+        list.map((item) => (
+          <NotesListItem item={item} key={item.get('id')} deleteNote={deleteNote} />
+        ))
+      ) : (
+        <Text>Empty List</Text>
+      )
+    );
   }
 
   render() {
-    const { notes, deleteNote } = this.props;
-    console.log(notes.get(0).get('id'));
+    const { notes: { loading } } = this.props;
 
     return (
       <View style={{ flex: 1, backgroundColor: '#e0f3fd', paddingTop: 10, paddingBottom: 10, }}>
         <ScrollView>
-          {notes.map((item) => (
-            <NotesListItem item={item} key={item.get('id')} deleteNote={deleteNote} />
-          ))}
+          {loading ? <ActivityIndicator size="large" color="#0000ff" /> : this.renderlist()}
         </ScrollView>
         <StyledIconAdd
           name="plus"
