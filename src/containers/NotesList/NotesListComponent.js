@@ -16,6 +16,7 @@ class NotesListComponent extends PureComponent {
   }
 
   componentWillMount() {
+    console.log(this.props);
     firebase.database().ref('users/001').set({
       name: 'Alexander Matiugin',
       age: 25,
@@ -24,8 +25,6 @@ class NotesListComponent extends PureComponent {
 
   render() {
     const { notes, deleteNote } = this.props;
-
-    console.log(database, 'firebase');
 
     return (
       <View style={{ flex: 1, backgroundColor: '#e0f3fd', paddingTop: 10, paddingBottom: 10, }}>

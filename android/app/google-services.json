@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:7857104875:android:530c2a93f2f1b8b4",
+        "mobilesdk_app_id": "1:7857104875:android:8cc8fec2c56c18fc",
         "android_client_info": {
-          "package_name": "alexandr.matiugin.inc"
+          "package_name": "com.finmanager"
         }
       },
       "oauth_client": [
         {
-          "client_id": "7857104875-2eekgc9st3hirmr35g465llaubf3tea6.apps.googleusercontent.com",
+          "client_id": "7857104875-4u1tuc5aeuboioc6eirnpjopph6rnnq3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "alexandr.matiugin.inc",
+            "package_name": "com.finmanager",
             "certificate_hash": "27cb96bf698ffd297bab87fcdd5b156e6766c74d"
           }
         },

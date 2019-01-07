@@ -34,9 +34,6 @@ class AddNoteComponent extends PureComponent {
   render() {
     const { description, amount, isInc } = this.state;
 
-
-    console.log(this.state);
-
     return (
       <View>
         <Button title="disabled" onPress={this.handleBack} />
