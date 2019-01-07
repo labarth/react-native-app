@@ -1,9 +1,10 @@
 import React, { PureComponent } from 'react';
+import { List, Map } from 'immutable';
 import { NavigationActions } from 'react-navigation';
 import { ScrollView, View, Text } from 'react-native';
 import { NotesListItem } from './NotesListItem';
 import { StyledIconAdd } from './Styled/Styled';
-import firebase from 'firebase';
+import { database } from '../../../configFirebase';
 import { GoogleSignin } from 'react-native-google-signin'
 
 
@@ -27,8 +28,7 @@ class NotesListComponent extends PureComponent {
   };
 
   componentWillMount() {
-    console.log(this.props);
-    firebase.database().ref('users/001').set({
+    database.ref('users/001').set({
       name: 'Alexander Matiugin',
       age: 25,
     })
