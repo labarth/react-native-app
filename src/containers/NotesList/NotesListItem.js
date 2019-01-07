@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { StyleSheet, View, } from 'react-native';
-import { Row } from '../../components/Row/Row';
-import { CustomText } from '../../components/CustomText/CustomText';
-import { StyledContent, StyledItem, StyledAmountText, StyledIconTrash } from './Styled/Styled';
+import { StyleSheet, View, Text } from 'react-native';
+import { StyledIconTrash } from './Styled/Styled';
 
 class NotesListItem extends PureComponent {
   static propTypes = {};
@@ -16,47 +14,65 @@ class NotesListItem extends PureComponent {
 
   render() {
     const { item } = this.props;
+    const isInc = item.get('isInc');
 
     return (
-      <StyledItem key={item.get('id')} isInc={item.get('isInc')}>
-        <StyledContent>
-          <Row indent={5} align="center">
-            <CustomText>{new Date(item.get('date')).toLocaleDateString()}</CustomText>
-            <Row direction="flex-end">
-              <StyledAmountText indent>{!item.get('isInc') && '-'}{item.get('amount')}</StyledAmountText>
-              <StyledAmountText>{item.get('currency')}</StyledAmountText>
-            </Row>
-          </Row>
-          <CustomText>{item.get('description')}</CustomText>
-          <StyledIconTrash name="trash" size={25} color="red" onPress={this.handleDeleteNote}/>
-        </StyledContent>
-        <View style={[item.get('isInc') ? styles.isInc : styles.isDec]} />
-      </StyledItem>
+      <View style={[styles.item, !isInc && styles.reverse]}>
+        <View style={[styles.indicator, isInc && styles.indicatorGreen]} />
+        <View style={styles.content}>
+          <View style={styles.row}>
+            <Text style={styles.text}>{new Date(item.get('date')).toLocaleDateString()}</Text>
+            <View style={{...styles.row, marginBottom: 6, justifyContent: 'flex-end' }}>
+              <Text style={{...styles.textBig, marginRight: 6 }}>{!item.get('isInc') && '-'}{item.get('amount')}</Text>
+              <Text style={styles.textBig}>{item.get('currency')}</Text>
+            </View>
+          </View>
+          <Text style={styles.text}>{item.get('description')}</Text>
+          <StyledIconTrash name="trash" size={25} color="red" onPress={this.handleDeleteNote} />
+        </View>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
   item: {
-    backgroundColor: 'white',
-    color: 'red',
-    marginBottom: 10,
-    position: 'relative',
+    backgroundColor: '#fff',
+    marginBottom: 15,
+    marginRight: 50,
+    borderRadius: 4,
+    flex: 1,
+    flexDirection: 'row',
+  },
+  reverse: {
+    flexDirection: 'row-reverse',
+  },
+  indicator: {
+    width: 5,
+    backgroundColor: '#d0011b',
+  },
+  indicatorGreen: {
+    backgroundColor: '#7ed321',
+  },
+  content: {
+    flex: 1,
+    padding: 10,
+    paddingTop: 5,
   },
   text: {
-    color: '#000',
     fontSize: 15,
-    fontFamily: 'Verdana',
+    lineHeight: 20,
+    color: '#000',
   },
-  isInc: {
-    flex: 1,
-    maxWidth: 5,
-    backgroundColor: 'green',
+  textBig: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: '#000',
   },
-  isDec: {
+  row: {
     flex: 1,
-    maxWidth: 5,
-    backgroundColor: 'red',
+    flexDirection: 'row',
+    alignItems: 'center'
   }
 });
 
