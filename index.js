@@ -5,7 +5,7 @@ import AppNavigator from './src/AppNavigator';
 import { name as appName } from './app.json';
 import { Provider } from 'react-redux';
 import { store } from './configureStore';
-import "@babel/polyfill";
+import "babel-polyfill";
 
 const Component = () => (
   <Provider store={store}>

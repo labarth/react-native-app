@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Text, View, Button } from 'react-native';
+import { View } from 'react-native';
 import PropTypes from 'prop-types';
 import { GoogleSignin, GoogleSigninButton, statusCodes } from 'react-native-google-signin';
 import {NavigationActions} from 'react-navigation'

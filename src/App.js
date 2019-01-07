@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { ActivityIndicator, View } from 'react-native';
 import { GoogleSignin, statusCodes } from 'react-native-google-signin';
 import { NavigationActions } from 'react-navigation';
-import firebase from 'firebase';
 
 console.disableYellowBox = true;
 
