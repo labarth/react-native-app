@@ -7,7 +7,8 @@
     "test": "jest",
     "android": "react-native run-android",
     "debug": "open rndebugger://set-debugger-loc?port=8081",
-    "build": "cd android && ./gradlew assembleRelease"
+    "build": "cd android && ./gradlew assembleRelease",
+    "debug:key": "keytool -list -v -alias androiddebugkey -keystore ~/.android/debug.keystore"
   },
   "dependencies": {
     "firebase": "^5.7.2",
