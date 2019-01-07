@@ -26,6 +26,7 @@ class App extends PureComponent {
      GoogleSignin.configure({
       webClientId: '7857104875-h1bfv8be1raf9c9ahi3rt3u5c93vejjc.apps.googleusercontent.com',
     });
+
     this.getCurrentUserInfo();
   }
 
