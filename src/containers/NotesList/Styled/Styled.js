@@ -41,7 +41,7 @@ export const StyledIconAdd = styled(Icon)`
 
 export const StyledIconTrash = styled(IconTrash)`
   position: absolute;
-  right: 10;
-  bottom: 10;
+  right: 5;
+  bottom: 5;
   z-index: 1;
 `
