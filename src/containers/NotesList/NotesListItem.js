@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { StyleSheet, View, Text } from 'react-native';
 import { StyledIconTrash } from './Styled/Styled';
+import { database } from '../../../configFirebase';
 
 class NotesListItem extends PureComponent {
   static propTypes = {};
@@ -10,6 +11,8 @@ class NotesListItem extends PureComponent {
 
   handleDeleteNote = () => {
     this.props.deleteNote({id: this.props.item.get('id') });
+    const deleteNoteByUserRef = database.ref(`notes/${this.props.userId}/${this.props.item.get('id')}`);
+    deleteNoteByUserRef.remove();
   }
 
   render() {

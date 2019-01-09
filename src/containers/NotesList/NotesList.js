@@ -7,6 +7,7 @@ import { deleteNote } from '../../redux/notes/actions';
 
 const mapStateToProps = (state) => ({
   notes: state.notes,
+  userId: state.auth.userInfo.user.id,
 });
 
 const mapDispatchToProps = (dispatch) => ({

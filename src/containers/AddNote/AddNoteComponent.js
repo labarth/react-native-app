@@ -41,19 +41,6 @@ class AddNoteComponent extends PureComponent {
 
   handleCheckboxChange = (value) => this.setState({ isInc: value });
 
-  getNotes = () => {
-    const { user } = this.props;
-
-    const starCountRef = database.ref(`notes/${user.id}`);
-    starCountRef.on('value', function(snapshot) {
-      const notes = Object.values(snapshot.val()).map((item) => {
-        return Map(item);
-      });
-      console.log(notes);
-      return List(notes);
-    });
-  }
-
   render() {
     const { description, amount, isInc } = this.state;
 

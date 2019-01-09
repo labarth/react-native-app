@@ -14,9 +14,9 @@ export const getNotesActions = {
 
 
 getNotes = async (user) => {
-  const starCountRef = database.ref(`notes/${user.id}`);
-  const notesSnapshot = await starCountRef.once('value');
-  return List(Object.values(notesSnapshot.val()).map((note) => Map(note)));
+  const notesByUserRef = database.ref(`notes/${user.id}`);
+  const notesSnapshot = await notesByUserRef.once('value');
+  return List(Object.values(Object.entries(notesSnapshot.val()).map((item) => Map({ ...item[1], id: item[0] }))));
 }
 
 export const getCurrentUserNotes = (user) => async (dispatch) => {

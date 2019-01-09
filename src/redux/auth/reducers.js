@@ -16,7 +16,7 @@ const signRequest = (state) => state
 
 const signInSuccess = (state, { payload }) => state
 .set('loading', false)
-.set('userInfo', payload.user)
+.set('userInfo', payload.userInfo)
 .set('error', null);
 
 const signError = (state, { payload }) => state

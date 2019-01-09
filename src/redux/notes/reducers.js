@@ -8,9 +8,18 @@ const initialState = Record({
   list: List(),
 });
 
-const addNodeReducer = (state, { payload }) => state.push(payload.note);
+const addNodeReducer = (state, { payload }) => {
+  return state
+  .set('loading', false)
+  .set('list', state.list.push(payload.note));
+}
 
-const deleteNoteReducer = (state, { payload }) => state.filter((note) => note.get('id') !== payload.id);
+
+const deleteNoteReducer = (state, { payload }) => {
+  return state
+  .set('loading', false)
+  .set('list', state.list.filter((note) => note.get('id') !== payload.id))
+}
 
 const getNotes = (state) => state.set({ loading: true, list: List() });
 

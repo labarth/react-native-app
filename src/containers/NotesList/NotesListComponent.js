@@ -33,7 +33,7 @@ class NotesListComponent extends PureComponent {
     return (
       list.size ? (
         list.map((item) => (
-          <NotesListItem item={item} key={item.get('id')} deleteNote={deleteNote} />
+          <NotesListItem item={item} key={item.get('id')} deleteNote={deleteNote} userId={this.props.userId} />
         ))
       ) : (
         <Text>Empty List</Text>
